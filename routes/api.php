@@ -1,1 +1,1 @@
-emang gweh apaan
+he cukicuki
