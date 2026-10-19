@@ -19,11 +19,16 @@ class AnggotaController extends Controller
         ];
     }
 
+
     public function index()
     {
         // Menggunakan variabel untuk ditampilkan di tabel View
         return view('hima.anggota', ['daftarAnggota' => $this->daftarAnggota]);
+
+        // $daftarAnggota = $this->daftarAnggota;
+        // return view('hima.anggota', compact('daftarAnggota'));
     }
+
 
     public function tambah()
     {

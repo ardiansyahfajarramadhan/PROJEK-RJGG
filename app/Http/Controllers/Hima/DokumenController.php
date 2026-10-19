@@ -16,6 +16,8 @@ class DokumenController extends Controller
         $this->daftarDokumen = [
             ['id_dok' => 'D-001', 'id_kegiatan' => 'K-001', 'jenis' => 'Proposal', 'file' => 'proposal_vibe.pdf'],
             ['id_dok' => 'D-002', 'id_kegiatan' => 'K-002', 'jenis' => 'Aturan', 'file' => 'draft_phion.docx'],
+            ['id_dok' => 'D-003', 'id_kegiatan' => 'K-001', 'jenis' => 'Laporan', 'file' => 'laporan_vibe.pdf'],
+            ['id_dok' => 'D-004', 'id_kegiatan' => 'K-002', 'jenis' => 'Notulen', 'file' => 'notulen_phion.docx']
         ];
     }
 
