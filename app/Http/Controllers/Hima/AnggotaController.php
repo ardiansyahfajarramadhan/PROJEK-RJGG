@@ -7,51 +7,42 @@ use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
 {
-    // Function 1: Menampilkan semua data anggota
-    public function index()
+    // Deklarasi Variabel 1 agar bisa dipakai di banyak function
+    private $daftarAnggota;
+
+    public function __construct()
     {
-        // Variabel 1: $daftarAnggota
-        $daftarAnggota = [
+        // Inisialisasi isi variabel
+        $this->daftarAnggota = [
             ['id' => 2555200005, 'nama' => 'Ardian Syah Fajar R', 'divisi' => 'Ketua HIMA', 'status' => 'Aktif'],
             ['id' => 2555200006, 'nama' => 'Abdullah Muzakki', 'divisi' => 'Humas', 'status' => 'Aktif'],
         ];
-
-        return view('hima.anggota', compact('daftarAnggota'));
     }
 
-    // Function 2: Menampilkan form tambah anggota (Dummy response)
+    public function index()
+    {
+        // Menggunakan variabel untuk ditampilkan di tabel View
+        return view('hima.anggota', ['daftarAnggota' => $this->daftarAnggota]);
+    }
+
     public function tambah()
     {
-        return response()->json([
-            'status' => 'info',
-            'pesan' => 'Endpoint ini untuk memuat form pendaftaran anggota baru.'
-        ]);
+        return "Form untuk menambah anggota HIMA ke dalam data variabel.";
     }
 
-    // Function 3: Memproses penyimpanan data anggota baru
     public function simpan(Request $request)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Data anggota baru berhasil disimpan (Simulasi).'
-        ]);
+        return "Data anggota baru berhasil ditambahkan ke variabel pendaftaran.";
     }
 
-    // Function 4: Menampilkan detail satu anggota berdasarkan ID
     public function detail($id)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Menampilkan detail profil untuk ID Mahasiswa: ' . $id
-        ]);
+        // Menggunakan variabel untuk mensimulasikan pencarian data
+        return "Mencari data dengan ID " . $id . " di dalam variabel daftarAnggota...";
     }
 
-    // Function 5: Menonaktifkan atau menghapus anggota
     public function nonaktifkan($id)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Anggota dengan ID ' . $id . ' berhasil dinonaktifkan.'
-        ]);
+        return "Menghapus ID " . $id . " dari variabel daftarAnggota...";
     }
 }

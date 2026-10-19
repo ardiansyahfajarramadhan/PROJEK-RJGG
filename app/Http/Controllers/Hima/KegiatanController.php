@@ -7,52 +7,42 @@ use Illuminate\Http\Request;
 
 class KegiatanController extends Controller
 {
-    // Function 6: Menampilkan semua data kegiatan/proker
-    public function index()
+    // Deklarasi Variabel 2 agar bisa dipakai di banyak function
+    private $daftarKegiatan;
+
+    public function __construct()
     {
-        // Variabel 2: $daftarKegiatan
-        $daftarKegiatan = [
+        // Inisialisasi isi variabel
+        $this->daftarKegiatan = [
             ['id_kegiatan' => 'K-001', 'nama_proker' => 'JuaraVibe Coding Bootcamp', 'status' => 'Disetujui'],
             ['id_kegiatan' => 'K-002', 'nama_proker' => 'Olimpiade PHION', 'status' => 'Menunggu'],
         ];
-
-        // Melempar variabel ke file view kegiatan.blade.php
-        return view('hima.kegiatan', compact('daftarKegiatan'));
     }
 
-    // Function 7: Menampilkan form usulan kegiatan (Dummy response)
+    public function index()
+    {
+        // Menggunakan variabel untuk ditampilkan di tabel View
+        return view('hima.kegiatan', ['daftarKegiatan' => $this->daftarKegiatan]);
+    }
+
     public function usulkan()
     {
-        return response()->json([
-            'status' => 'info',
-            'pesan' => 'Endpoint ini untuk memuat form pengajuan usulan kegiatan.'
-        ]);
+        return "Form untuk mengusulkan proker baru ke dalam variabel.";
     }
 
-    // Function 8: Memproses penyimpanan usulan kegiatan
     public function simpanUsulan(Request $request)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Usulan kegiatan baru berhasil disubmit (Simulasi).'
-        ]);
+        return "Usulan kegiatan berhasil ditambahkan ke variabel sementara.";
     }
 
-    // Function 9: Mengubah status kegiatan menjadi disetujui
     public function persetujuan($id)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Proposal kegiatan dengan ID ' . $id . ' telah disetujui.'
-        ]);
+        // Menggunakan variabel untuk mengubah status persetujuan
+        return "Mengubah status proker ID " . $id . " di dalam variabel daftarKegiatan menjadi Disetujui.";
     }
 
-    // Function 10: Membatalkan kegiatan
     public function batalkan($id)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Kegiatan dengan ID ' . $id . ' berhasil dibatalkan.'
-        ]);
+        return "Membatalkan proker ID " . $id . " dari variabel daftarKegiatan.";
     }
 }

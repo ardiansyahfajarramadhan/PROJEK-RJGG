@@ -7,52 +7,42 @@ use Illuminate\Http\Request;
 
 class DokumenController extends Controller
 {
-    // Function 11: Menampilkan semua data dokumen
-    public function index()
+    // Deklarasi Variabel 3 agar bisa dipakai di banyak function
+    private $daftarDokumen;
+
+    public function __construct()
     {
-        // Variabel 3: $daftarDokumen
-        $daftarDokumen = [
+        // Inisialisasi isi variabel yang berelasi dengan ID Kegiatan
+        $this->daftarDokumen = [
             ['id_dok' => 'D-001', 'id_kegiatan' => 'K-001', 'jenis' => 'Proposal', 'file' => 'proposal_vibe.pdf'],
             ['id_dok' => 'D-002', 'id_kegiatan' => 'K-002', 'jenis' => 'Aturan', 'file' => 'draft_phion.docx'],
         ];
-
-        // Melempar variabel ke file view dokumen.blade.php
-        return view('hima.dokumen', compact('daftarDokumen'));
     }
 
-    // Function 12: Menampilkan form unggah dokumen (Dummy response)
+    public function index()
+    {
+        // Menggunakan variabel untuk ditampilkan di tabel View
+        return view('hima.dokumen', ['daftarDokumen' => $this->daftarDokumen]);
+    }
+
     public function unggah()
     {
-        return response()->json([
-            'status' => 'info',
-            'pesan' => 'Endpoint ini untuk memuat form upload dokumen (Proposal/LPJ).'
-        ]);
+        return "Form untuk mengunggah dokumen baru ke dalam sistem.";
     }
 
-    // Function 13: Memproses upload file dokumen
     public function simpanDokumen(Request $request)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'File dokumen berhasil diunggah dan disimpan ke sistem (Simulasi).'
-        ]);
+        return "Dokumen berhasil disimpan dan dicatat ke dalam variabel arsip.";
     }
 
-    // Function 14: Memproses permintaan unduhan dokumen
     public function unduh($id)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Memulai proses pengunduhan dokumen ID: ' . $id
-        ]);
+        // Menggunakan variabel untuk mencari file yang akan diunduh
+        return "Mencari file dokumen ID " . $id . " di dalam variabel daftarDokumen untuk diunduh.";
     }
 
-    // Function 15: Menghapus arsip dokumen
     public function hapus($id)
     {
-        return response()->json([
-            'status' => 'success',
-            'pesan' => 'Arsip dokumen dengan ID ' . $id . ' berhasil dihapus permanen.'
-        ]);
+        return "Menghapus arsip dokumen ID " . $id . " dari variabel daftarDokumen.";
     }
 }
